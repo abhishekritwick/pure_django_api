@@ -54,8 +54,12 @@ class StatusAPIView(mixins.CreateModelMixin, generics.ListAPIView):
     # def perform_create(self,serializer):
     #     serializer.save(user=self.request.user)
 
-
-
+#RetrieveUpdateDestroyAPIView -> This will do everything separately written below
+# class StatusDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+#     permission_classes      = []
+#     authentication_classes  = []
+#     queryset                = Status.objects.all()
+#     serializer_class        = StatusSerializer
 
 class StatusDetailAPIView(mixins.DestroyModelMixin, mixins.UpdateModelMixin, generics.RetrieveAPIView):
     permission_classes      = []
@@ -69,6 +73,9 @@ class StatusDetailAPIView(mixins.DestroyModelMixin, mixins.UpdateModelMixin, gen
     #     kw_id = kwargs.get('id') #Same as that specified in the urls.py
     #     return Status.objects.get(id=kw_id)
     def put(self,request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def patch(self,request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
 
     def delete(self,request, *args, **kwargs):
