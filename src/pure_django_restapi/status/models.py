@@ -20,9 +20,11 @@ class Status(models.Model): #fb status, instagram post
     updated     = models.DateTimeField(auto_now=True)
     timestamp   = models.DateTimeField(auto_now_add=True)
 
+    objects = StatusManager()
+
     def __str__(self):
         return str(self.content)[:50]
 
     class Meta:
-        verbose_name = 'Staus post'
+        verbose_name = 'Status post'
         verbose_name_plural = 'Status posts'
