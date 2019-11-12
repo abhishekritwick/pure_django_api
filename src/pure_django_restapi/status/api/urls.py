@@ -2,7 +2,7 @@ from django.conf.urls import url, include
 from .views import (
     StatusAPIView,
     # StatusCreateAPIView,
-    StatusDetailAPIView,
+    # StatusDetailAPIView,
     # StatusUpdateAPIView,
     # StatusDeleteAPIView
     )
@@ -11,7 +11,7 @@ from .views import (
 urlpatterns = [
     url(r'^$', StatusAPIView.as_view()),
     # url(r'^create/$', StatusCreateAPIView.as_view()), Not needed now after using mixin as StatusAPIView is handling it already
-    url(r'^(?P<pk>\d+)/$', StatusDetailAPIView.as_view()), #url(r'^(?P<pk>.*)/$', StatusDetailAPIView.as_view()),-> for passing pk directly, otherwise you'll have to pass id as kwargs
+    # url(r'^(?P<pk>\d+)/$', StatusDetailAPIView.as_view()), #url(r'^(?P<pk>.*)/$', StatusDetailAPIView.as_view()),-> for passing pk directly, otherwise you'll have to pass id as kwargs
     # url(r'^(?P<pk>\d+)/update/$', StatusUpdateAPIView.as_view()),
     # url(r'^(?P<pk>\d+)/delete/$', StatusDeleteAPIView.as_view()),
 ]
