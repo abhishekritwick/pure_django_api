@@ -3,7 +3,7 @@ from django.db import models
 
 
 def upload_update_image(instance, filename):
-    return "updates/{user}/{filename}".format(user=instance.user, filename = filename)
+    return "status/{user}/{filename}".format(user=instance.user, filename = filename)
 
 # Create your models here.
 class StatusQuerySet(models.QuerySet):
@@ -14,7 +14,7 @@ class StatusManager(models.Manager):
         return StatusQuerySet(self.model, using=self._db)
 
 class Status(models.Model): #fb status, instagram post
-    user        = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user        = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True)
     content     = models.TextField(null=True, blank=True)
     image       = models.ImageField(upload_to=upload_update_image, blank=True, null=True)
     updated     = models.DateTimeField(auto_now=True)
